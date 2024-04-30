@@ -10,9 +10,9 @@
 
 3. **Data Visualization:** Displays detailed information about movies, including titles, genres, synopses, ratings, and more.
 
-4. **Filters and Search:** Users can search and filter movies by various criteria, such as genre, year, or rating.
+4. **Search:** Users can search different cinemas.
 
-5. **Security and Authentication:** Implements authentication mechanisms to ensure secure access to the application.
+
 
 ## Installation:
 
