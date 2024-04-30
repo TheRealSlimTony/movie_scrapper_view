@@ -21,8 +21,11 @@
    git clone <Repository_URL>
 
 2. Clone the repository:
+   ```bash
    pip install -r requirements.txt
 
-3. python manage.py runserver
+4. Python Manage.py runserver
+  ```bash
+  python manage.py runserver
 
 
