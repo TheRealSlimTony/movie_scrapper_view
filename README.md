@@ -2,6 +2,9 @@
 
 `movie_scrapper_view` is a web view developed in Django that serves as a frontend interface for the Movie Scrapper application. It connects to a backend called `Movie Scrapper` to display and manage data related to movies.
 
+## Demo:
+![movie Scrapper View](screenshots/movie_scrapper_interface.png)
+
 ## Features:
 
 1. **Intuitive Web Interface:** Provides a user-friendly interface to explore and manage information from the backend.
