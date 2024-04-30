@@ -18,14 +18,14 @@
 
 1. Clone the repository:
    ```bash
-   git clone <Repository_URL>
+    git clone <https://github.com/TheRealSlimTony/movie_scrapper_view>
 
 2. Clone the repository:
    ```bash
-   pip install -r requirements.txt
+    pip install -r requirements.txt
 
 4. Python Manage.py runserver
   ```bash
-   python manage.py runserver
+    python manage.py runserver
 
 
