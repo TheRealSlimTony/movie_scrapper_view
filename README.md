@@ -24,7 +24,7 @@
    ```bash
     pip install -r requirements.txt
 
-4. Python Manage.py runserver
+3. Python Manage.py runserver
   ```bash
     python manage.py runserver
 
