@@ -52,23 +52,63 @@
         li {
             margin-bottom: 5px;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        thead th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
-    <h1>Movie scrapper</h1>
+    
+    <h1>Movie scrapper, Cinepolis de  {{ cinema_name }}</h1>
+    <form action="/" method="POST">
+        {% csrf_token %}
+        <label for="pelicula">pelicula</label>
+        <select id="pelicula" name="pelicula">
+            <option value="490">moravia</option>
+            <option value="251">cartago</option>
+            <option value="509">lindora</option>
+        </select>
+        <button type="submit">aceptar</button>
+    </form>
+    
 
     {% for pelicula in peliculas %}
     <div class="pelicula">
         <img src="{{ pelicula.Imagen }}" alt="{{ pelicula.Título }}" onclick="mostrarInfo('{{ forloop.counter }}')">
+        <!-- <h2>{{ pelicula.Título }}</h2> -->
+        <p>{{ pelicula.synopsis }}</p>
         <div id="info-{{ forloop.counter }}">
-            <h2>{{ pelicula.Título }}</h2>
-            <p>Duración: {{ pelicula.Duración }}</p>
-            <p>Synopsis: {{ pelicula.synopsis }}</p>
-            <ul>
-                {% for horario in pelicula.Horarios %}
-                <li>{{ horario.Fecha }} - {{ horario.Formato }} - {{ horario.Hora|date:"H:i" }} - Sala {{ horario.Sala }}</li>
-                {% endfor %}
-            </ul>
+            <!-- <p>Duración: {{ pelicula.Duración }}</p> -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Formato</th>
+                        <th>Hora</th>
+                        <th>Sala</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for horario in pelicula.Horarios %}
+                    <tr>
+                        <td>{{ horario.Fecha }}</td>
+                        <td>{{ horario.Formato }}</td>
+                        <td>{{ horario.Hora }}</td>
+                        <td>{{ horario.Sala }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
     {% endfor %}
