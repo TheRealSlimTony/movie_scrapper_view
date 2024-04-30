@@ -18,7 +18,7 @@
 
 1. Clone the repository:
    ```bash
-    git clone <https://github.com/TheRealSlimTony/movie_scrapper_view>
+    git clone https://github.com/TheRealSlimTony/movie_scrapper_view
 
 2. Clone the repository:
    ```bash
