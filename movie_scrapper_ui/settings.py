@@ -25,9 +25,21 @@ SECRET_KEY = 'django-insecure-rf=d%aed=_g1dy*q3-%c0c0wx_!kol@b-()cw(j0g5=w$b5xlb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*",
+                 "https://cinepolisscrapperui.azurewebsites.net",
+                 "http://cinepolisscrapperui.azurewebsites.net",
+                 "cinepolisscrapperui.azurewebsites.net"]
+            
 
+CORS_ALLOWED_ORGINIS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:5500",
+    "https://cinepolisscrapperui.azurewebsites.net",
+    "http://cinepolisscrapperui.azurewebsites.net",]
 
+CSRF_TRUSTED_ORIGINS = ['https://cinepolisscrapperui.azurewebsites.net']
+
+CORS_ALLOWED_ORGINIS = True
 # Application definition
 
 INSTALLED_APPS = [

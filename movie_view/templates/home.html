@@ -70,7 +70,7 @@
 <body>
     
     <h1>Movie scrapper, Cinepolis de  {{ cinema_name }}</h1>
-    <form action="/" method="POST">
+    <form action="{% url 'cartelera' %}" method="POST">
         {% csrf_token %}
         <label for="pelicula">Cine</label>
         <select id="pelicula" name="pelicula">
