@@ -31,15 +31,15 @@ ALLOWED_HOSTS = ["*",
                  "cinepolisscrapperui.azurewebsites.net"]
             
 
-CORS_ALLOWED_ORGINIS = [
+CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://127.0.0.1:5500",
+    "http://127.0.0.1:8000",
     "https://cinepolisscrapperui.azurewebsites.net",
     "http://cinepolisscrapperui.azurewebsites.net",]
 
 CSRF_TRUSTED_ORIGINS = ['https://cinepolisscrapperui.azurewebsites.net']
 
-CORS_ALLOWED_ORGINIS = True
+CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,10 +50,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movie_view',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Mover aquí
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

@@ -1,3 +1,4 @@
+import json
 import requests
 from django.shortcuts import render
 
@@ -16,19 +17,22 @@ def home(request):
 
 def cartelera(request):
     if request.method == 'POST':
-        cinema_id = request.POST.get('cinema_id')
-        url = 'https://cinepolisscrapper.azurewebsites.net/cartelera/'
-        data = {'cinema_id': request.POST['pelicula']}
-        response = requests.post(url, json=data)
-        cinema_name = {'490':'Moravia',
-                    '251':'Cartago',
-                    '509':'Lindora'}
-        return render(request, 'home.html', {'peliculas': response.json(), 'cinema_name': cinema_name[cinema_id]})
+        reqUrl = 'https://cinepolisscrapper.azurewebsites.net/cartelera/'
+        # reqUrl = "http://127.0.0.1:8001/cartelera/"
+
+
+        response = requests.post(reqUrl, json={"cinema_id":int(request.POST['pelicula'])})
+
+        if response.status_code == 200:
+            cinema_name = {'490': 'Moravia', '251': 'Cartago', '509': 'Lindora'}
+            return render(request, 'home.html', {'peliculas': response.json(), 'cinema_name': cinema_name[(request.POST['pelicula'])]})
+        else:
+            return render(request, 'home.html', {'error': 'Error al obtener la cartelera.'})
     else:
         url = 'https://cinepolisscrapper.azurewebsites.net/cartelera/'
-        response = requests.get(url)
-        cinema_name = {'490':'Moravia',
-                    '251':'Cartago',
-                    '509':'Lindora'}
-        return render(request, 'home.html', {'peliculas': response.json(), 'cinema_name': cinema_name['490']})
-        
+        response = requests.post(url, json={'cinema_id': 490})
+
+        if response.status_code == 200:
+            return render(request, 'home.html', {'peliculas': response.json(), 'cinema_name': 'Moravia'})
+        else:
+            return render(request, 'home.html', {'error': 'Error al obtener la cartelera.'})
