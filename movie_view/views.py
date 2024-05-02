@@ -3,21 +3,21 @@ import requests
 from django.shortcuts import render
 
 def home(request):
-    url = 'https://cinepolisscrapper.azurewebsites.net/'
-    response = requests.get(url)
-    if response.status_code == 200:
-        peliculas = response.json()  # Asumiendo que la respuesta es un JSON con los datos esperados
-        return render(request, 'home_page.html')
-    else:
-        peliculas = []  # Asegura que 'peliculas' esté definido aunque la petición falle
-        print("Error al obtener datos:", response.status_code, response.text)
+    # url = 'https://cinepolisscrapper.azurewebsites.net/'
+    # response = requests.get(url)
+    # if response.status_code == 200:
+    #     peliculas = response.json()  # Asumiendo que la respuesta es un JSON con los datos esperados
+    #     return render(request, 'home_page.html')
+    # else:
+    #     peliculas = []  # Asegura que 'peliculas' esté definido aunque la petición falle
+    #     print("Error al obtener datos:", response.status_code, response.text)
     
     return render(request, 'home_page.html')
 
 
 def cartelera(request):
     if request.method == 'POST':
-        reqUrl = 'https://cinepolisscrapper.azurewebsites.net/cartelera/'
+        reqUrl = 'https://cinepolisscrapper.azurewebsites.net/cartelera'
         # reqUrl = "http://127.0.0.1:8001/cartelera/"
 
 

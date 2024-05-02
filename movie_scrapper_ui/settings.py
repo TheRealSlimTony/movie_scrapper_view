@@ -26,21 +26,20 @@ SECRET_KEY = 'django-insecure-rf=d%aed=_g1dy*q3-%c0c0wx_!kol@b-()cw(j0g5=w$b5xlb
 DEBUG = True
 
 ALLOWED_HOSTS = ["*",
-                 "https://cinepolisscrapperui.azurewebsites.net",
-                 "http://cinepolisscrapperui.azurewebsites.net",
-                 "cinepolisscrapperui.azurewebsites.net"]
-            
+                 "cinepolisscrapperui.azurewebsites.net",
+                 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://cinepolisscrapperui.azurewebsites.net'
+    ]  
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:8000",
+    # "http://localhost:3000",
+    # "http://127.0.0.1:8000",
     "https://cinepolisscrapperui.azurewebsites.net",
-    "http://cinepolisscrapperui.azurewebsites.net",]
+    "http://cinepolisscrapperui.azurewebsites.net",
+]
 
-CSRF_TRUSTED_ORIGINS = ['https://cinepolisscrapperui.azurewebsites.net']
-
-CORS_ALLOW_ALL_ORIGINS = True
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,6 +50,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'movie_view',
     "corsheaders",
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Mover aquí
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 MIDDLEWARE = [
