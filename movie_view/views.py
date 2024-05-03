@@ -20,14 +20,14 @@ def cartelera(request):
         response = requests.post(reqUrl, json={"cinema_id": int(request.POST['pelicula'])})
         if response.status_code == 200:
             cinema_name = {'490': 'Moravia', '251': 'Cartago', '509': 'Lindora'}
-            return render(request, 'home.html', {'peliculas': response.json(), 'cinema_name': cinema_name[request.POST['pelicula']]})
+            return render(request, 'cartelera.html', {'peliculas': response.json(), 'cinema_name': cinema_name[request.POST['pelicula']]})
         else:
-            return render(request, 'home.html', {'error': 'Error al obtener la cartelera.'})
+            return render(request, 'cartelera.html', {'error': 'Error al obtener la cartelera.'})
     else:
         url = 'https://cinepolisscrapper.azurewebsites.net/cartelera/'
         response = requests.post(url, json={'cinema_id': 490})
 
         if response.status_code == 200:
-            return render(request, 'home.html', {'peliculas': response.json(), 'cinema_name': 'Moravia'})
+            return render(request, 'cartelera.html', {'peliculas': response.json(), 'cinema_name': 'Moravia'})
         else:
-            return render(request, 'home.html', {'error': 'Error al obtener la cartelera.'})
+            return render(request, 'cartelera.html', {'error': 'Error al obtener la cartelera.'})

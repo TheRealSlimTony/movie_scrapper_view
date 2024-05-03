@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rf=d%aed=_g1dy*q3-%c0c0wx_!kol@b-()cw(j0g5=w$b5xlb
 DEBUG = True
 
 ALLOWED_HOSTS = [
-                 # "*",
+                #  "*",
                  "cinepolisscrapperui.azurewebsites.net",
                  ]
 

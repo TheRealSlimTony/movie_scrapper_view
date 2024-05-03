@@ -65,6 +65,46 @@
         thead th {
             background-color: #f2f2f2;
         }
+    
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .pelicula {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pelicula img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border-bottom: 1px solid #ccc; }
+            td {
+                border: none;
+                position: relative;
+                padding-left: 40%;
+                text-align: right;
+                padding-bottom: 10px;
+                min-height: 40px;
+            }
+            td:before {
+                position: absolute;
+                top: 0;
+                left: 10px;
+                width: 35%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                content: attr(data-label);
+            }
+        }
     </style>
 </head>
 <body>
@@ -74,9 +114,12 @@
         {% csrf_token %}
         <label for="pelicula">Cine</label>
         <select id="pelicula" name="pelicula">
-            <option value="490">moravia</option>
-            <option value="251">cartago</option>
+            <option value="490">lincoln</option>
+            <option value="251">paseo metropoli</option>
             <option value="509">lindora</option>
+            <!-- <option value="144">desamparados</option>
+            <option value="264">tres rios</option>
+            <option value="438">paseo de las flores</option> -->
         </select>
         <button type="submit">aceptar</button>
     </form>
@@ -85,10 +128,8 @@
     {% for pelicula in peliculas %}
     <div class="pelicula">
         <img src="{{ pelicula.Imagen }}" alt="{{ pelicula.Título }}" onclick="mostrarInfo('{{ forloop.counter }}')">
-        <!-- <h2>{{ pelicula.Título }}</h2> -->
         <p>{{ pelicula.synopsis }}</p>
         <div id="info-{{ forloop.counter }}">
-            <!-- <p>Duración: {{ pelicula.Duración }}</p> -->
             <table>
                 <thead>
                     <tr>
@@ -112,13 +153,13 @@
         </div>
     </div>
     {% endfor %}
-
+    
     <script>
         function mostrarInfo(peliculaId) {
             var infoDiv = document.getElementById('info-' + peliculaId);
             var display = infoDiv.style.display;
-            infoDiv.style.display = display === 'none' ? 'flex' : 'none';
+            infoDiv.style.display = display === 'none' ? 'flex' : 'none'; 
         }
-    </script>
+    </script>    
 </body>
 </html>
